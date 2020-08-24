@@ -3,11 +3,7 @@
 $inputFile  = $argv[1];
 $outputFile = $argv[2];
 
-if(count($argv) > 3) {
-	$text = $argv[3];
-}else {
-	$text = 'coverage';
-}
+$text = count($argv) > 3 ? $argv[3] : 'coverage';
 
 if (!file_exists($inputFile)) {
     throw new InvalidArgumentException('Invalid input file provided');
