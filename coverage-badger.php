@@ -3,6 +3,12 @@
 $inputFile  = $argv[1];
 $outputFile = $argv[2];
 
+if(count($argv) > 3) {
+	$text = $argv[3];
+}else {
+	$text = 'coverage';
+}
+
 if (!file_exists($inputFile)) {
     throw new InvalidArgumentException('Invalid input file provided');
 }
@@ -40,5 +46,6 @@ if ($coverage < 40) {
 
 $template = str_replace('{{ total }}', $coverage, $template);
 $template = str_replace('{{ color }}', $color, $template);
+$template = str_replace('{{ text }}', $text, $template);
 
 file_put_contents($outputFile, $template);
